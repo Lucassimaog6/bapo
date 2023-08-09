@@ -15,6 +15,7 @@
 
 		if (data.value !== false) {
 			userEmail.value = data.value;
+		console.log(data.value)
 			navigateTo('/chat');
 		} else {
 			alert('Senha incorreta');
