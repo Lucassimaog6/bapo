@@ -1,38 +1,37 @@
 <script setup>
-const userEmail = useState("token");
-// if (userEmail.value === undefined) {
-// 	navigateTo('/');
-// }
+const userId = useState("token");
+if (userId.value === undefined) {
+	navigateTo('/');
+}
+
+let content = ''
+
+const sendMessage = async () => {
+  console.log(content)
+  await useFetch('/api/message', {
+    method: 'POST',
+    body: { 
+      content: content,
+      userId: userId
+    }
+  })
+}
+
+const { data: messages } = await useFetch('/api/message')
+
 </script>
 
 <template>
   <main class="bg-slate-300 h-screen grid-rows-[1fr_auto]">
-    <div>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis,
-        quidem.
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis,
-        quidem.
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis,
-        quidem.
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis,
-        quidem.
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis,
-        quidem.
+    <div class="flex flex-col gap-4">
+      <div class="bg-gray-800 text-white p-4 w-fit rounded-lg m-4" v-for="mes in messages">
+        {{ mes.content }}
       </div>
     </div>
 
     <div class="bg-gray-400 absolute bottom-0 w-screen flex items-center">
-      <input class="p-2 w-full bg-transparent" type="text" />
-      <button>
+      <input v-model="content" class="p-2 w-full bg-transparent" type="text" />
+      <button v-on:click="sendMessage">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

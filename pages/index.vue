@@ -2,7 +2,7 @@
 	let email = '';
 	let password = '';
 
-	const userEmail = useState('token');
+	const userId = useState('token');
 
 	const login = async () => {
 		const { data } = await useFetch('/api/login', {
@@ -14,7 +14,7 @@
 		});
 
 		if (data.value !== false) {
-			userEmail.value = data.value;
+			userId.value = data.value;
 		console.log(data.value)
 			navigateTo('/chat');
 		} else {
