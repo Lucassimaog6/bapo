@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model Message {
+  id        Int      @id @default(sequence())
+  content   String
+  createdAt DateTime @default(now())
+  userId    Int
+  User      User     @relation(fields: [userId], references: [id])
+}
+
+model User {
+  id       Int       @id @default(sequence())
+  email    String    @unique
+  password String
+  Message  Message[]
+}
