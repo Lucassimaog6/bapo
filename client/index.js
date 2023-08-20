@@ -8,7 +8,7 @@ button.addEventListener('click', async () => {
     const email = input_email.value;
     const password = input_password.value;
 
-    const response = await fetch('https://solid-broccoli-6p7wpwgw94j35x9g-8080.preview.app.github.dev/login', {
+    const response = await fetch('http://54.198.45.10:8080/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

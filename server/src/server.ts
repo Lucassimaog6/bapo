@@ -1,4 +1,4 @@
-import express, { json } from 'express'
+import express from 'express'
 import WebSocket, { WebSocketServer } from 'ws'
 import { PrismaClient } from '@prisma/client'
 import cors from 'cors';
@@ -15,7 +15,7 @@ wss.on('connection', (ws) => {
     ws.on('message', async (message) => {
         const { content, userId } = JSON.parse(message.toString())
         
-        await prisma.message.create({
+        const msg = await prisma.message.create({
             data: {
                 content: content,
                 userId: parseInt(userId),
@@ -30,7 +30,8 @@ wss.on('connection', (ws) => {
 
         const jsonMessage = JSON.parse(message.toString())
         jsonMessage.email = user.email
-        console.log(message.toString())
+        jsonMessage.id = msg.id
+        console.log(jsonMessage)
 
         wss.clients.forEach((client) => {
             if (client.readyState === WebSocket.OPEN) {
