@@ -10,7 +10,7 @@ export default function Chat({ route, navigation }) {
     const scrollViewRef = useRef();
 
     const getMessages = async () => {
-        const response = await fetch('http://34.176.43.128:8080/messages');
+        const response = await fetch('https://bapo.onrender.com:8080/messages');
         const m = await response.json();
         setMessages(m);
     }

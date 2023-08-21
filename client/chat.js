@@ -41,7 +41,7 @@ ws.addEventListener('message', async (event) => {
 });
 
 const getMessages = async () => {
-    const response = await fetch('http://34.176.43.128:8080/messages');
+    const response = await fetch('https://bapo.onrender.com:8080/messages');
     const messages = await response.json();
     messages.forEach(message => {
         createMessage(message.email, message.content, message.userId);
