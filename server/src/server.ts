@@ -5,7 +5,11 @@ import cors from 'cors';
 
 const prisma = new PrismaClient()
 const app = express()
-app.use(cors())
+
+app.use(cors({
+    origin: '*'
+}))
+
 app.use(express.json())
 
 const wss = new WebSocketServer({ port: 8081 })
