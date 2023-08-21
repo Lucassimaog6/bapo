@@ -8,7 +8,7 @@ export default function Login({ navigation }) {
   const [password, setPassword] = useState('')
 
   async function handleLogin() {
-    const response = await fetch('http://54.198.45.10:8080/login', {
+    const response = await fetch('http://34.176.43.128:8080/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

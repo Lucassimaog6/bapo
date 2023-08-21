@@ -1,7 +1,7 @@
 import { View, Text, TextInput, StyleSheet, KeyboardAvoidingView, ScrollView, Platform, SafeAreaView, TouchableOpacity, Alert } from 'react-native';
 import { useState, useEffect, useRef } from 'react';
 
-const ws = new WebSocket('ws://54.198.45.10:8081');
+const ws = new WebSocket('ws://34.176.43.128:8081');
 
 export default function Chat({ route, navigation }) {
     const { userId } = route.params;
@@ -10,7 +10,7 @@ export default function Chat({ route, navigation }) {
     const scrollViewRef = useRef();
 
     const getMessages = async () => {
-        const response = await fetch('http://54.198.45.10:8080/messages');
+        const response = await fetch('http://34.176.43.128:8080/messages');
         const m = await response.json();
         setMessages(m);
     }

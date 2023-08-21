@@ -6,7 +6,7 @@ const input_message = document.querySelector('input');
 const button = document.querySelector('button');
 const ul = document.querySelector('ul');
 const divOverflow = document.querySelector('#scroll');
-const ws = new WebSocket('ws://54.198.45.10:8081');
+const ws = new WebSocket('ws://34.176.43.128:8081');
 
 window.addEventListener('load', () => {
     getMessages()
@@ -41,7 +41,7 @@ ws.addEventListener('message', async (event) => {
 });
 
 const getMessages = async () => {
-    const response = await fetch('http://54.198.45.10:8080/messages');
+    const response = await fetch('http://34.176.43.128:8080/messages');
     const messages = await response.json();
     messages.forEach(message => {
         createMessage(message.email, message.content, message.userId);

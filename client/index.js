@@ -8,7 +8,7 @@ button.addEventListener('click', async () => {
     const email = input_email.value;
     const password = input_password.value;
 
-    const response = await fetch('http://54.198.45.10:8080/login', {
+    const response = await fetch('http://34.176.43.128:8080/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
